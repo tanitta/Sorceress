@@ -23,7 +23,7 @@ namespace"sorceress"{
 	
 		method"Init"
 		:attributes(override)
-		:body(function(self)						
+		:body(function(self)
 			self.Input = trit.model.sorceress.Input:new();
 			self:cOut("...loaded Input");
 			
@@ -37,6 +37,8 @@ namespace"sorceress"{
 			
 			self.Steering = trit.model.sorceress.Steering:new();
 			self.Steering:SetSensors(self.Sensor:GetSensors());
+			self.Steering:SetInputs(self.Input:GetInputs());
+			
 			self:cOut("...loaded Steering");
 			
 			self:cOut("...loaded Sorceress Driver");
@@ -49,6 +51,7 @@ namespace"sorceress"{
 		method"Call"
 		:attributes(override)
 		:body(function(self)
+			self:Input();
 			self:Sensor();
 			self:Steering();
 			
@@ -57,10 +60,10 @@ namespace"sorceress"{
 		method"Value"
 		:attributes(override)
 		:body(function(self)
-			-- _A_HANDLE_FL = self.Steering:GetVal("FL")
-			-- _A_HANDLE_FR = self.Steering:GetVal("FR")
-			-- _A_HANDLE_RL = self.Steering:GetVal("RL")
-			-- _A_HANDLE_RR = self.Steering:GetVal("RR")
+			_A_HANDLE_FL = self.Steering:GetVal("fl")
+			_A_HANDLE_FR = self.Steering:GetVal("fr")
+			_A_HANDLE_RL = self.Steering:GetVal("rl")
+			_A_HANDLE_RR = self.Steering:GetVal("rr")
 
 			-- _A_WING_FL = self:GetAngWing("FL")
 			-- _A_WING_FR = self:GetAngWing("FR")
