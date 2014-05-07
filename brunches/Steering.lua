@@ -4,7 +4,7 @@ namespace"sorceress"{
 	class "Steering"{
 		metamethod"_init"
 		:body(function(self)
-			self.val = {m = 0, fl = 180, fr = 180, rl = 0, rr = 0}
+			self.val = {perM = 0, fl = 180, fr = 180, rl = 0, rr = 0}
 			self.sensors = {};
 			self.inputs = {};
 			
@@ -40,7 +40,7 @@ namespace"sorceress"{
 	
 		metamethod"__call"
 		:body(function(self)
-			self.val.m =
+			local angM =
 				pid(
 					0,
 					(self.sensors.core.wy*20+self.inputs.handle*120),
@@ -49,11 +49,11 @@ namespace"sorceress"{
 					{-8,8}
 				)*(1200-math.abs(_VZ(0)*3.6))/1200*(1-self.perFlightMode)
 			
-			self.perangHandle = self.val.m/30
+			self.val.perM = angM/30
 			
 			local angTo_F = 1
-			self.val.fl = self.val.m-angTo_F+180 -- -math.deg(math.atan2(_VX(0)/5,limit(-_VZ(0),10,9999999999)))
-			self.val.fr = self.val.m+angTo_F+180 -- -math.deg(math.atan2(_VX(0)/5,limit(-_VZ(0),10,9999999999)))
+			self.val.fl = angM-angTo_F+180
+			self.val.fr = angM+angTo_F+180
 
 			local angTo_R = 1
 			self.val.rl = angTo_R+math.deg(math.atan2(self.sensors.core.vx/10,limit(-self.sensors.core.vz,10,9999999999))) --/10

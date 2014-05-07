@@ -33,13 +33,21 @@ namespace"sorceress"{
 			self.Sensor:SetChipName("fr","_N_FR");
 			self.Sensor:SetChipName("rl","_N_RL");
 			self.Sensor:SetChipName("rr","_N_RR");
+			self.Sensor:SetChipName("flRoot",_G["_N_FL"]-1);
+			self.Sensor:SetChipName("frRoot",_G["_N_FR"]-1);
+			self.Sensor:SetChipName("rlRoot",_G["_N_RL"]-1);
+			self.Sensor:SetChipName("rrRoot",_G["_N_RR"]-1);
 			self:cOut("...loaded Sensor");
 			
 			self.Steering = trit.model.sorceress.Steering:new();
 			self.Steering:SetSensors(self.Sensor:GetSensors());
 			self.Steering:SetInputs(self.Input:GetInputs());
-			
 			self:cOut("...loaded Steering");
+			
+			self.Engine = trit.model.sorceress.Engine:new();
+			self.Engine:SetSensors(self.Sensor:GetSensors());
+			self.Engine:SetInputs(self.Input:GetInputs());
+			self:cOut("...loaded Engine");
 			
 			self:cOut("...loaded Sorceress Driver");
 		end);
@@ -54,6 +62,10 @@ namespace"sorceress"{
 			self:Input();
 			self:Sensor();
 			self:Steering();
+			
+			self.Engine:SetPerHandle(self.Steering:GetVal("perM"));
+			
+			self:Engine();
 			
 		end);
 		
@@ -78,10 +90,10 @@ namespace"sorceress"{
 			-- _A_WING_SM = self:GetAngWing("SM")
 
 
-			-- _P_FL = self:GetPowWheel("FL")
-			-- _P_FR = self:GetPowWheel("FR")
-			-- _P_RL = self:GetPowWheel("RL")
-			-- _P_RR = self:GetPowWheel("RR")
+			_P_FL = self.Engine:GetVal("fl")
+			_P_FR = self.Engine:GetVal("fr")
+			_P_RL = self.Engine:GetVal("rl")
+			_P_RR = self.Engine:GetVal("rr")
 
 			-- _B_FL = self:GetBraWheel("FL")
 			-- _B_FR = self:GetBraWheel("FR")
