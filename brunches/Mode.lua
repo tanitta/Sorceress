@@ -33,17 +33,19 @@ namespace"sorceress"{
 		metamethod"__call"
 		:body(function(self)
 			if  self.inputs.accel < 0.2  and
-				(_H(self.sensors.flRoot.cn-1)>1 or _H(self.sensors.flRoot.cn-1)<0.2) and
-				(_H(self.sensors.frRoot.cn-1)>1 or _H(self.sensors.frRoot.cn-1)<0.2) and
-				(_H(self.sensors.rlRoot.cn-1)>1 or _H(self.sensors.rlRoot.cn-1)<0.2) and
-				(_H(self.sensors.rrRoot.cn-1)>1 or _H(self.sensors.rrRoot.cn-1)<0.2)
+				(_H(self.sensors.flRoot.cn)>1 or _H(self.sensors.flRoot.cn)<0.2) and
+				(_H(self.sensors.frRoot.cn)>1 or _H(self.sensors.frRoot.cn)<0.2) and
+				(_H(self.sensors.rlRoot.cn)>1 or _H(self.sensors.rlRoot.cn)<0.2) and
+				(_H(self.sensors.rrRoot.cn)>1 or _H(self.sensors.rrRoot.cn)<0.2)
 			then
-				self.modes.flight=0;
-			else
 				self.modes.flight=1;
+			else
+				self.modes.flight=0;
 			end
 			
 			self.modes.snow = 0;
+			
+			out(0,"isflight",self.modes.flight)
 		end);
 	};
 };

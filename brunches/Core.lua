@@ -50,10 +50,12 @@ namespace"sorceress"{
 			self:cOut("...loaded Mode");
 
 			self:UnitInit("Steering")
+			self.Steering:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Steering");
 			
 			self.Engines = {};
 			self:UnitInit("Engine")
+			self.Engine:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Engine");
 			
 			self:UnitInit("Wing")
@@ -82,6 +84,9 @@ namespace"sorceress"{
 			self:Engine();
 			
 			self:Wing();
+			
+			self:cOut(tostring(_FPS()));
+			
 		end);
 		
 		method"Value"
@@ -96,6 +101,12 @@ namespace"sorceress"{
 			_A_WING_FR = self.Wing:GetVal("fr")
 			_A_WING_RL = self.Wing:GetVal("rl")
 			_A_WING_RR = self.Wing:GetVal("rr")
+			
+			_A_WING_SFL = self.Wing:GetVal("sfl")
+			_A_WING_SFR = self.Wing:GetVal("sfr")
+			_A_WING_SRL = self.Wing:GetVal("srl")
+			_A_WING_SRR = self.Wing:GetVal("srr")
+			_A_WING_SM = self.Wing:GetVal("sm")
 
 			-- _A_WING_SFL = self:GetAngWing("SFL")
 			-- _A_WING_SFR = self:GetAngWing("SFR")

@@ -7,7 +7,7 @@ namespace"sorceress"{
 			self.val = {perM = 0, fl = 180, fr = 180, rl = 0, rr = 0}
 			self.sensors = {};
 			self.inputs = {};
-			
+			self.modes = {};
 			self.perFlightMode = 0;
 			
 			self.angHandle = {}
@@ -26,6 +26,11 @@ namespace"sorceress"{
 		method"SetInputs"
 		:body(function(self,inputs)
 			self.inputs = inputs;
+		end);
+		
+		method"SetModes"
+		:body(function(self,modes)
+			self.modes = modes;
 		end);
 
 		method "GetAngHandle"
@@ -70,12 +75,14 @@ namespace"sorceress"{
 			self.val.perM = angM/30
 			
 			local angTo_F = 1
-			self.val.fl = angM-angTo_F+180
-			self.val.fr = angM+angTo_F+180
+			self.val.fl = (angM-angTo_F)*(1-self.modes.flight)+180
+			self.val.fr = (angM+angTo_F)*(1-self.modes.flight)+180
 
 			local angTo_R = 1
-			self.val.rl = angTo_R+math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))) --/10
-			self.val.rr = angTo_R-math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999)))
+			self.val.rl = (angTo_R+math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))))*(1-self.modes.flight) --/10
+			self.val.rr = (angTo_R-math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))))*(1-self.modes.flight)
+			
+			
 		end);
 	};
 };
