@@ -14,7 +14,7 @@ namespace"sorceress"{
 			self.inputs = {};
 			self.inputs.handle = 0;
 			self.inputs.accel = 0;
-			self.inputs.nomalBrake = 0;
+			self.inputs.normalBrake = 0;
 			self.inputs.sideBrake = 0;
 			self.inputs.deff = 0;
 			self.inputs.roll = 0;
@@ -43,7 +43,7 @@ namespace"sorceress"{
 			self.inputs.handle = math.abs(self.analogs.handle())^1*self:sign(self.analogs.handle());
 			self.inputs.accel = math.abs(self.analogs.accel())^2*self:sign(self.analogs.accel());
 			
-			self.inputs.nomalBrake = math.abs(limit(self.analogs.brake(),-1,0));
+			self.inputs.normalBrake = math.abs(limit(self.analogs.brake(),-1,0));
 			self.inputs.sideBrake = math.abs(limit(self.analogs.brake(),0,1));
 			
 			self.inputs.deff = math.abs(limit(self.analogs.brake(),0,1));

@@ -21,6 +21,13 @@ namespace"sorceress"{
 		:attributes(static)
 		:init("Sorceress");
 	
+		method"UnitInit"
+		:body(function(self,strName)
+			self[strName] = trit.model.sorceress[strName]:new();
+			self[strName]:SetSensors(self.Sensor:GetSensors());
+			self[strName]:SetInputs(self.Input:GetInputs());
+		end);
+	
 		method"Init"
 		:attributes(override)
 		:body(function(self)
@@ -29,25 +36,29 @@ namespace"sorceress"{
 			
 			self.Sensor = trit.model.sorceress.Sensor:new();
 			self.Sensor:SetChipName("core",0);
-			self.Sensor:SetChipName("fl","_N_FL");
-			self.Sensor:SetChipName("fr","_N_FR");
-			self.Sensor:SetChipName("rl","_N_RL");
-			self.Sensor:SetChipName("rr","_N_RR");
+			self.Sensor:SetChipName("fl",_G["_N_FL"]);
+			self.Sensor:SetChipName("fr",_G["_N_FR"]);
+			self.Sensor:SetChipName("rl",_G["_N_RL"]);
+			self.Sensor:SetChipName("rr",_G["_N_RR"]);
 			self.Sensor:SetChipName("flRoot",_G["_N_FL"]-1);
 			self.Sensor:SetChipName("frRoot",_G["_N_FR"]-1);
 			self.Sensor:SetChipName("rlRoot",_G["_N_RL"]-1);
 			self.Sensor:SetChipName("rrRoot",_G["_N_RR"]-1);
 			self:cOut("...loaded Sensor");
-			
-			self.Steering = trit.model.sorceress.Steering:new();
-			self.Steering:SetSensors(self.Sensor:GetSensors());
-			self.Steering:SetInputs(self.Input:GetInputs());
+
+			self:UnitInit("Mode")
+			self:cOut("...loaded Mode");
+
+			self:UnitInit("Steering")
 			self:cOut("...loaded Steering");
 			
-			self.Engine = trit.model.sorceress.Engine:new();
-			self.Engine:SetSensors(self.Sensor:GetSensors());
-			self.Engine:SetInputs(self.Input:GetInputs());
+			self.Engines = {};
+			self:UnitInit("Engine")
 			self:cOut("...loaded Engine");
+			
+			self:UnitInit("Wing")
+			self.Wing:SetModes(self.Mode:GetModes())
+			self:cOut("...loaded Wing");
 			
 			self:cOut("...loaded Sorceress Driver");
 		end);
@@ -61,12 +72,16 @@ namespace"sorceress"{
 		:body(function(self)
 			self:Input();
 			self:Sensor();
+			
+			self:Mode()
+			
 			self:Steering();
 			
 			self.Engine:SetPerHandle(self.Steering:GetVal("perM"));
 			
 			self:Engine();
 			
+			self:Wing();
 		end);
 		
 		method"Value"
@@ -77,11 +92,11 @@ namespace"sorceress"{
 			_A_HANDLE_RL = self.Steering:GetVal("rl")
 			_A_HANDLE_RR = self.Steering:GetVal("rr")
 
-			-- _A_WING_FL = self:GetAngWing("FL")
-			-- _A_WING_FR = self:GetAngWing("FR")
-			-- _A_WING_M = self:GetAngWing("M")
-			-- _A_WING_RL = self:GetAngWing("RL")
-			-- _A_WING_RR = self:GetAngWing("RR")
+			_A_WING_FL = self.Wing:GetVal("fl")
+			_A_WING_FR = self.Wing:GetVal("fr")
+			_A_WING_RL = self.Wing:GetVal("rl")
+			_A_WING_RR = self.Wing:GetVal("rr")
+
 			-- _A_WING_SFL = self:GetAngWing("SFL")
 			-- _A_WING_SFR = self:GetAngWing("SFR")
 			-- _A_WING_SRL = self:GetAngWing("SRL")
