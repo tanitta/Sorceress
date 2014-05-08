@@ -62,6 +62,10 @@ namespace"sorceress"{
 			self.Wing:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Wing");
 			
+			self:UnitInit("Brake")
+			self.Brake:SetModes(self.Mode:GetModes())
+			self:cOut("...loaded Brake");
+			
 			self:cOut("...loaded Sorceress Driver");
 		end);
 		
@@ -85,6 +89,7 @@ namespace"sorceress"{
 			
 			self:Wing();
 			
+			self.Brake();
 			self:cOut(tostring(_FPS()));
 			
 		end);
@@ -108,19 +113,15 @@ namespace"sorceress"{
 			_A_WING_SRR = self.Wing:GetVal("srr")
 			_A_WING_SM = self.Wing:GetVal("sm")
 
-			-- _A_WING_SFL = self:GetAngWing("SFL")
-			-- _A_WING_SFR = self:GetAngWing("SFR")
-			-- _A_WING_SRL = self:GetAngWing("SRL")
-			-- _A_WING_SRR = self:GetAngWing("SRR")
-
-			-- _A_WING_SM = self:GetAngWing("SM")
-
-
 			_P_FL = self.Engine:GetVal("fl")
 			_P_FR = self.Engine:GetVal("fr")
 			_P_RL = self.Engine:GetVal("rl")
 			_P_RR = self.Engine:GetVal("rr")
 
+			_B_FL = self.Brake:GetVal("fl")
+			_B_FR = self.Brake:GetVal("fr")
+			_B_RL = self.Brake:GetVal("rl")
+			_B_RR = self.Brake:GetVal("rr")
 			-- _B_FL = self:GetBraWheel("FL")
 			-- _B_FR = self:GetBraWheel("FR")
 			-- _B_RL = self:GetBraWheel("RL")
