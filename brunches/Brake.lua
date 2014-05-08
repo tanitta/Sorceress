@@ -51,7 +51,7 @@ namespace"sorceress"{
 			self.ABS_RL()
 			self.ABS_RR()
 
-			local ib_m=0--1.5
+			local ib_m=0
 
 			local ib_l=math.max(self.inputs.perHandle,0) *ib_m
 			local ib_r=-math.min(self.inputs.perHandle,0)*ib_m

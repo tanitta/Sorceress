@@ -54,8 +54,11 @@ namespace"sorceress"{
 			self:cOut("...loaded Steering");
 			
 			self.Engines = {};
-			self:UnitInit("Engine")
-			self.Engine:SetModes(self.Mode:GetModes())
+			self.Engines[1] = trit.model.sorceress.GEX9:new();
+			self.Engines[1]:SetSensors(self.Sensor:GetSensors());
+			self.Engines[1]:SetInputs(self.Input:GetInputs());
+			self.Engines[1]:SetModes(self.Mode:GetModes())
+			self.numEngine = 1
 			self:cOut("...loaded Engine");
 			
 			self:UnitInit("Wing")
@@ -78,17 +81,13 @@ namespace"sorceress"{
 		:body(function(self)
 			self:Input();
 			self:Sensor();
-			
 			self:Mode()
-			
 			self:Steering();
 			
-			self.Engine:SetPerHandle(self.Steering:GetVal("perM"));
-			
-			self:Engine();
+			self.Engines[self.numEngine]:SetPerHandle(self.Steering:GetVal("perM"));
+			self.Engines[self.numEngine]();
 			
 			self:Wing();
-			
 			self.Brake();
 			self:cOut(tostring(_FPS()));
 			
@@ -113,19 +112,15 @@ namespace"sorceress"{
 			_A_WING_SRR = self.Wing:GetVal("srr")
 			_A_WING_SM = self.Wing:GetVal("sm")
 
-			_P_FL = self.Engine:GetVal("fl")
-			_P_FR = self.Engine:GetVal("fr")
-			_P_RL = self.Engine:GetVal("rl")
-			_P_RR = self.Engine:GetVal("rr")
+			_P_FL = self.Engines[self.numEngine]:GetVal("fl")
+			_P_FR = self.Engines[self.numEngine]:GetVal("fr")
+			_P_RL = self.Engines[self.numEngine]:GetVal("rl")
+			_P_RR = self.Engines[self.numEngine]:GetVal("rr")
 
 			_B_FL = self.Brake:GetVal("fl")
 			_B_FR = self.Brake:GetVal("fr")
 			_B_RL = self.Brake:GetVal("rl")
 			_B_RR = self.Brake:GetVal("rr")
-			-- _B_FL = self:GetBraWheel("FL")
-			-- _B_FR = self:GetBraWheel("FR")
-			-- _B_RL = self:GetBraWheel("RL")
-			-- _B_RR = self:GetBraWheel("RR")
 			
 			-- --Material
 			-- _C_BODY_1 = self:GetColMaterial("Body_1")

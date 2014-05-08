@@ -45,7 +45,7 @@ namespace"sorceress"{
 			
 			self.modes.snow = 0;
 			
-			out(0,"isflight",self.modes.flight)
+			
 		end);
 	};
 };
