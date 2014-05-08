@@ -54,7 +54,7 @@ namespace"sorceress"{
 			self:cOut("...loaded Steering");
 			
 			self.Engines = {};
-			self.Engines[1] = trit.model.sorceress.GEX9:new();
+			self.Engines[1] = trit.model.sorceress.Engine:new();
 			self.Engines[1]:SetSensors(self.Sensor:GetSensors());
 			self.Engines[1]:SetInputs(self.Input:GetInputs());
 			self.Engines[1]:SetModes(self.Mode:GetModes())
@@ -94,11 +94,13 @@ namespace"sorceress"{
 			self.Engines[self.numEngine]();
 			
 			self:Wing();
-			self.Brake();
+			self:Brake();
 			
-			
-			-- self:cOut(tostring(_FPS()));
-			
+			self.Material:SetBrake("fl",self.Brake:GetVal("fl"))
+			self.Material:SetBrake("fr",self.Brake:GetVal("fr"))
+			self.Material:SetBrake("rl",self.Brake:GetVal("rl"))
+			self.Material:SetBrake("rr",self.Brake:GetVal("rr"))
+			self:Material();
 		end);
 		
 		method"Value"
@@ -157,21 +159,15 @@ namespace"sorceress"{
 			_C_LIGHT_1 = self.Material:GetVal("_C_light1")
 			_E_LIGHT_1 = self.Material:GetVal("_E_light1")
 
-			-- _C_LIGHT_1 = self:GetColMaterial("Light_1")
-			-- _E_LIGHT_1 = self:GetEffMaterial("Light_1")
+			_C_BRAKEROTOR_FL = self.Material:GetVal("_C_brakeRotorFL")
+			_C_BRAKEROTOR_FR = self.Material:GetVal("_C_brakeRotorFR")
+			_C_BRAKEROTOR_RL = self.Material:GetVal("_C_brakeRotorRL")
+			_C_BRAKEROTOR_RR = self.Material:GetVal("_C_brakeRotorRR")
 
-
-
-			-- _C_BRAKEROTOR_FL = self:GetColMaterial("BrakeRotor_FL")
-			-- _C_BRAKEROTOR_FR = self:GetColMaterial("BrakeRotor_FR")
-			-- _C_BRAKEROTOR_RL = self:GetColMaterial("BrakeRotor_RL")
-			-- _C_BRAKEROTOR_RR = self:GetColMaterial("BrakeRotor_RR")
-
-			-- _E_BRAKEROTOR_FL = self:GetEffMaterial("BrakeRotor_FL")
-			-- _E_BRAKEROTOR_FR = self:GetEffMaterial("BrakeRotor_FR")
-			-- _E_BRAKEROTOR_RL = self:GetEffMaterial("BrakeRotor_RL")
-			-- _E_BRAKEROTOR_RR = self:GetEffMaterial("BrakeRotor_RR")
-		
+			_E_BRAKEROTOR_FL = self.Material:GetVal("_E_brakeRotorFL")
+			_E_BRAKEROTOR_FR = self.Material:GetVal("_E_brakeRotorFR")
+			_E_BRAKEROTOR_RL = self.Material:GetVal("_E_brakeRotorRL")
+			_E_BRAKEROTOR_RR = self.Material:GetVal("_E_brakeRotorRR")
 		end);
 		
 		method"Draw"

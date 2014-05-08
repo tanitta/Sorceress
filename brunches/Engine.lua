@@ -46,33 +46,6 @@ namespace"sorceress"{
 		end);
 		metamethod"__call"
 		:body(function(self)
-		self.numOriginPower = limit(self.numOriginPower + 4000*(_KEY(7)-_KEY(4)),0,400000)
-			-- do
-			-- 	out(2,"■TCS_Output : ",(self.TCS_FL:GetOutput()+self.TCS_FR:GetOutput()+self.TCS_RL:GetOutput()+self.TCS_RR:GetOutput())/4)
-			-- 	local str = ""
-			-- 	for i = 1,(self.TCS_FL:GetOutput()+self.TCS_FR:GetOutput()+self.TCS_RL:GetOutput()+self.TCS_RR:GetOutput())/4*40 do
-			-- 		str = str..">"
-			-- 	end
-				
-			-- 	for i = 1,40-(self.TCS_FL:GetOutput()+self.TCS_FR:GetOutput()+self.TCS_RL:GetOutput()+self.TCS_RR:GetOutput())/4*40 do
-			-- 		str = str.."-."
-			-- 	end
-				
-			-- 	out(3,str)
-			-- end
-			-- do
-			-- 	out(4,"■OrignPower : ",self.numOriginPower/400000*100,"%")
-			-- 	local str = ""
-			-- 	for i = 1,self.numOriginPower/400000*40 do
-			-- 		str = str..">"
-			-- 	end
-				
-			-- 	for i = 1,40-self.numOriginPower/400000*40 do
-			-- 		str = str.."-."
-			-- 	end
-				
-			-- 	out(5,str)
-			-- end
 			self.TCS_FL:SetInput(self.sensors.flRoot.lvz, self.sensors.fl.nwy)
 			self.TCS_FR:SetInput(self.sensors.frRoot.lvz, -self.sensors.fr.nwy)
 			self.TCS_RL:SetInput(-self.sensors.rlRoot.lvz, self.sensors.rl.nwy)
