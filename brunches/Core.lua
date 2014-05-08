@@ -69,6 +69,12 @@ namespace"sorceress"{
 			self.Brake:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Brake");
 			
+			self:UnitInit("Material")
+			self.Material:SetModes(self.Mode:GetModes())
+			self.Material:SetColor();
+			
+			self:cOut("...loaded Material");
+			
 			self:cOut("...loaded Sorceress Driver");
 		end);
 		
@@ -89,7 +95,9 @@ namespace"sorceress"{
 			
 			self:Wing();
 			self.Brake();
-			self:cOut(tostring(_FPS()));
+			
+			
+			-- self:cOut(tostring(_FPS()));
 			
 		end);
 		
@@ -122,33 +130,37 @@ namespace"sorceress"{
 			_B_RL = self.Brake:GetVal("rl")
 			_B_RR = self.Brake:GetVal("rr")
 			
-			-- --Material
-			-- _C_BODY_1 = self:GetColMaterial("Body_1")
-			-- _C_BODY_2 = self:GetColMaterial("Body_2")
-			-- _C_BODY_3 = self:GetColMaterial("Body_3")
-			-- _C_CARBON = self:GetColMaterial("Carbon")
-			-- _C_FRAME = self:GetColMaterial("Frame")
-			-- _C_GLASS = self:GetColMaterial("Glass")
-			-- _C_WHEEL = self:GetColMaterial("Wheel")
+			_C_BODY_1 = self.Material:GetVal("_C_body1")
+			_C_BODY_2 = self.Material:GetVal("_C_body2")
+			_C_BODY_3 = self.Material:GetVal("_C_body3")
+			_C_CARBON = self.Material:GetVal("_C_carbon")
+			_C_FRAME = self.Material:GetVal("_C_frame")
+			_C_GLASS = self.Material:GetVal("_C_glass")
+			_C_SHEET_1 = self.Material:GetVal("_C_sheet1")
+			_C_SHEET_2 = self.Material:GetVal("_C_sheet2")
+			_C_WHEEL = self.Material:GetVal("_C_wheel")
+			_C_BRAKECALIPER = self.Material:GetVal("_C_brakeCaliper")
+			_C_LIGHT_2 = self.Material:GetVal("_C_light2")
+			
+			_E_BODY_1 = self.Material:GetVal("_E_body1")
+			_E_BODY_2 = self.Material:GetVal("_E_body2")
+			_E_BODY_3 = self.Material:GetVal("_E_body3")
+			_E_CARBON = self.Material:GetVal("_E_carbon")
+			_E_FRAME = self.Material:GetVal("_E_frame")
+			_E_GLASS = self.Material:GetVal("_E_glass")
+			_E_SHEET_1 = self.Material:GetVal("_E_sheet1")
+			_E_SHEET_2 = self.Material:GetVal("_E_sheet2")
+			_E_WHEEL = self.Material:GetVal("_E_wheel")
+			_E_BRAKECALIPER = self.Material:GetVal("_E_brakeCaliper")
+			_E_LIGHT_2 = self.Material:GetVal("_E_light2")
+			
+			_C_LIGHT_1 = self.Material:GetVal("_C_light1")
+			_E_LIGHT_1 = self.Material:GetVal("_E_light1")
 
 			-- _C_LIGHT_1 = self:GetColMaterial("Light_1")
-			-- _C_LIGHT_2 = self:GetColMaterial("Light_2")
-
-			-- _C_BRAKECALIPER = self:GetColMaterial("BrakeCaliper")
-
-			-- _C_SHEET_1 = self:GetColMaterial("Sheet_1")
-			-- _C_SHEET_2 = self:GetColMaterial("Sheet_2")
-
-			-- _E_BODY_1 = self:GetEffMaterial("Body_1")
-			-- _E_BODY_2 = self:GetEffMaterial("Body_2")
-			-- _E_BODY_3 = self:GetEffMaterial("Body_3")
-			-- _E_CARBON = self:GetEffMaterial("Carbon")
-			-- _E_FRAME = self:GetEffMaterial("Frame")
-			-- _E_GLASS = self:GetEffMaterial("Glass")
-			-- _E_WHEEL = self:GetEffMaterial("Wheel")
-
 			-- _E_LIGHT_1 = self:GetEffMaterial("Light_1")
-			-- _E_LIGHT_2 = self:GetEffMaterial("Light_2")
+
+
 
 			-- _C_BRAKEROTOR_FL = self:GetColMaterial("BrakeRotor_FL")
 			-- _C_BRAKEROTOR_FR = self:GetColMaterial("BrakeRotor_FR")
