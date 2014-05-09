@@ -40,7 +40,7 @@ namespace"sorceress"{
 
 		metamethod"__call"
 		:body(function(self)
-			self.inputs.handle = math.abs(self.analogs.handle())^1*self:sign(self.analogs.handle());
+			self.inputs.handle = math.abs(self.analogs.handle())^1.2*self:sign(self.analogs.handle());
 			self.inputs.accel = math.abs(self.analogs.accel())^2*self:sign(self.analogs.accel());
 			
 			self.inputs.normalBrake = math.abs(limit(self.analogs.brake(),-1,0));

@@ -45,18 +45,6 @@ namespace"sorceress"{
 	
 		metamethod"__call"
 		:body(function(self)
-			-- local angM =
-			-- 	pid(
-			-- 		0,
-			-- 		(self.sensors.core.wy*20+self.inputs.handle*120),
-			-- 		{0.3,0.15*1.5,0.04*1.5},
-			-- 		--{0.2,0,0},
-			-- 		{-8,8}
-			-- 	)*(1200-math.abs(_VZ(0)*3.6))/1200*(1-self.perFlightMode)
-			
-			-- self.val.perM = angM/30
-			
-			--ステア(新型)
 			local velXExp = 0
 			velXExp = 1-math.exp(-math.abs(self.sensors.core.lvz/2))
 			velXExp = limit(velXExp,0,1)
@@ -64,13 +52,12 @@ namespace"sorceress"{
 			do
 				local verX = pid(
 					0,
-					(self.sensors.core.nwy*14*velXExp+self.inputs.handle*70),
+					(self.sensors.core.nwy*14*velXExp+self.inputs.handle*80),
 					{0.5,0.15*1.5,0.04*1.5},
 					--{0.2,0,0},
 					{-8,8}
 				)
 				angM = math.atan2(verX*1,limit(math.abs(self.sensors.core.lvz),30*3.6,999999))*180/math.pi
-				-- out(1,math.atan2(0/30,-self.sensors.core.vz)*180/math.pi)
 			end
 			self.val.perM = angM/30
 			
@@ -79,10 +66,8 @@ namespace"sorceress"{
 			self.val.fr = (angM+angTo_F)*(1-self.modes.flight)+180
 
 			local angTo_R = 1
-			self.val.rl = (angTo_R+math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))))*(1-self.modes.flight) --/10
+			self.val.rl = (angTo_R+math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))))*(1-self.modes.flight)
 			self.val.rr = (angTo_R-math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))))*(1-self.modes.flight)
-			
-			
 		end);
 	};
 };
