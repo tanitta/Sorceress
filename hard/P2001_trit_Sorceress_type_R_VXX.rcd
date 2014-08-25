@@ -936,7 +936,7 @@ require "Boot" {
 	"ttata/Input",
 	"ttata/trit_Component",
 	"ttata/Spine",
-	"ttata/Model/Sorceress/brunches"
+	"ttata/Model/Sorceress"
 }
 require("ttata/Material.lua")
 require("ttata/Vector.lua")
