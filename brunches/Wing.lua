@@ -14,43 +14,43 @@ namespace"sorceress"{
 			self.val.srl = 90;
 			self.val.srr = 90;
 		end);
-	
+
 		method "SetSensors"
 		:body(function(self,sensors)
 			self.sensors = sensors;
 		end);
-		
+
 		method"SetInputs"
 		:body(function(self,inputs)
 			self.inputs = inputs;
 		end);
-		
+
 		method"SetModes"
 		:body(function(self,modes)
 			self.modes = modes;
 		end);
-	
+
 		method"GetVal"
 		:body(function(self,str)
 			return self.val[str]
 		end);
-		
+
 		method"Z"
 		:body(function(self)
 			self.val.fl=180-(37+5+self.sensors.core.lvz*0.22)*(1+self.inputs.perHandle*0.2)*(1-self.modes.flight)*(1-self.inputs.normalBrake)  - 67.5 *self.inputs.normalBrake- 0 *self.inputs.sideBrake
-			self.val.fr=180-(37+5+self.sensors.core.lvz*0.22)*(1-self.inputs.perHandle*0.2)*(1-self.modes.flight)*(1-self.inputs.normalBrake)   - 67.5 *self.inputs.normalBrake- 0*self.inputs.sideBrake 
-			self.val.rl=0-(33+5+self.sensors.core.lvz*0.22)*(1+self.inputs.perHandle*0.2)*(1-self.modes.flight)*(1-self.inputs.normalBrake)  - 67.5 *self.inputs.normalBrake- 0 *self.inputs.sideBrake 
+			self.val.fr=180-(37+5+self.sensors.core.lvz*0.22)*(1-self.inputs.perHandle*0.2)*(1-self.modes.flight)*(1-self.inputs.normalBrake)   - 67.5 *self.inputs.normalBrake- 0*self.inputs.sideBrake
+			self.val.rl=0-(33+5+self.sensors.core.lvz*0.22)*(1+self.inputs.perHandle*0.2)*(1-self.modes.flight)*(1-self.inputs.normalBrake)  - 67.5 *self.inputs.normalBrake- 0 *self.inputs.sideBrake
 			self.val.rr=0-(33+5+self.sensors.core.lvz*0.22)*(1-self.inputs.perHandle*0.2)*(1-self.modes.flight)*(1-self.inputs.normalBrake)  - 67.5 *self.inputs.normalBrake- 0 *self.inputs.sideBrake
 
 			do
 				local Pitch = (self.inputs.pitch*20+self.sensors.core.wx*5)
 				local Roll = (self.inputs.roll*20+self.sensors.core.wz*5)
-				self.val.fl = self.val.fl + (self.modes.flight)*( - Roll - Pitch ) 
+				self.val.fl = self.val.fl + (self.modes.flight)*( - Roll - Pitch )
 				self.val.fr = self.val.fr + (self.modes.flight)*(Roll - Pitch)
 				self.val.rl = self.val.rl + (self.modes.flight)*(- Roll + Pitch )
 				self.val.rr = self.val.rr + (self.modes.flight)*(Roll + Pitch )
 			end
-			
+
 			if self.modes.flight == 0 then
 				local gain1 = 0.6
 				local gain2 = 40
@@ -71,10 +71,10 @@ namespace"sorceress"{
 				self.val.fr = self.val.fr - 30
 				self.val.rl = self.val.rl - 30
 				self.val.rr = self.val.rr - 30
-				
+
 			end
 		end);
-		
+
 		method"X"
 		:body(function(self)
 			do
@@ -92,8 +92,8 @@ namespace"sorceress"{
 					self.val.sfl = ang(self.val.sfl, 90, 10)
 					self.val.sfr = ang(self.val.sfr, 90, 10)
 				end
-			
-				
+
+
 				if _VX(0)<-vx then
 					self.val.sm = ang(self.val.sm, 90-angSideDF, 10*(1-self.modes.flight))
 				elseif _VX(0)>vx then
@@ -112,9 +112,9 @@ namespace"sorceress"{
 					self.val.srl = ang(self.val.srl, 90, 10)
 					self.val.srr = ang(self.val.srr, 90, 10)
 				end
-				
+
 			end
-				
+
 			self.val.sm = self.val.sm*(1-self.modes.flight) + 90*self.modes.flight
 			self.val.sfl = self.val.sfl*(1-self.modes.flight) + 90*self.modes.flight
 			self.val.sfr = self.val.sfr*(1-self.modes.flight) + 90*self.modes.flight
@@ -122,17 +122,17 @@ namespace"sorceress"{
 			self.val.srr = self.val.srr*(1-self.modes.flight) + 90*self.modes.flight
 
 			self.val.sm = self.val.sm*(1-self.modes.snow) + 90*self.modes.snow
-			self.val.sfl = self.val.sfl*(1-self.modes.snow) + 90*self.modes.snow 
+			self.val.sfl = self.val.sfl*(1-self.modes.snow) + 90*self.modes.snow
 			self.val.sfr = self.val.sfr*(1-self.modes.snow) + 90*self.modes.snow
 			self.val.srl = self.val.srl*(1-self.modes.snow) + 90*self.modes.snow
 			self.val.srr = self.val.srr*(1-self.modes.snow) + 90*self.modes.snow
 		end);
-		
+
 		metamethod"__call"
 		:body(function(self)
 			self:Z();
 			self:X();
-			
+
 		end);
 	};
 };
