@@ -17,7 +17,7 @@ namespace"sorceress"{
 -- 			torqueSplitRatio = (x, y) -1<=x<=1,-1<=y<=1
 --			+:front
 --			-:rear
-			self.torqueSplitRatio = {x = 0, y = -0.8;}
+			self.torqueSplitRatio = {x = 0, y = -0.3}
 		end);
 
 		method"initTCS"
