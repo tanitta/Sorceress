@@ -17,7 +17,7 @@ namespace"sorceress"{
 -- 			torqueSplitRatio = (x, y) -1<=x<=1,-1<=y<=1
 --			+:front
 --			-:rear
-			self.torqueSplitRatio = {x = 0, y = -0.3}
+			self.torqueSplitRatio = {x = 0, y = 0.0}
 		end);
 
 		method"initTCS"
@@ -63,6 +63,7 @@ namespace"sorceress"{
 			self.TCS_RR()
 
 			local powMain=self.inputs.accel*(7.337*math.abs(self.sensors.core.lvz)^2 + 508.7*math.abs(self.sensors.core.lvz) ) + (1654 +self.numOriginPower*2)*self.inputs.accel
+			powMain = powMain*0.2
 			self.val.fl=powMain*(1-self.inputs.perHandle*(0.3+self.inputs.deff*0.7))*self.TCS_FL:GetOutput()*(1+self.torqueSplitRatio.y)*(1-self.modes.flight)
 			self.val.fr=powMain*(1+self.inputs.perHandle*(0.3+self.inputs.deff*0.7))*self.TCS_FR:GetOutput()*(1+self.torqueSplitRatio.y)*(1-self.modes.flight)
 			self.val.rl=powMain*(1-self.inputs.perHandle*(0.3+self.inputs.deff*0.7))*self.TCS_RL:GetOutput()*(1-self.torqueSplitRatio.y)*(1-self.modes.flight)
