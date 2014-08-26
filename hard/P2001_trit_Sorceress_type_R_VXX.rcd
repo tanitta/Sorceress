@@ -273,7 +273,10 @@ Body
 																									W:Cowl(angle=-2, color=_C_CARBON, effect=_E_CARBON) { }
 																								}
 																								S:Cowl(angle=90, option=3, color=_C_CARBON, effect=_E_CARBON) {
-																									S:Cowl(angle=175, option=1, effect=_E_CLEAR) {
+																									W:Cowl(angle=1, color=_C_CARBON, effect=_C_CARBON) {
+																										S:Cowl(angle=-155, color=_C_CARBON, effect=_E_CARBON) { }
+																									}
+																									N:Cowl(angle=-175, option=1, effect=_E_CLEAR) {
 																										W:Cowl(angle=90, option=1, effect=_E_CLEAR) {
 																											W:Cowl(angle=180, option=4, color=_C_CARBON, effect=_E_CARBON) {
 																												E:Cowl(angle=90, color=_C_CARBON, effect=_E_CARBON) { }
@@ -283,9 +286,6 @@ Body
 																												S:Cowl(option=3, color=_C_CARBON, effect=_E_CARBON) { }
 																											}
 																										}
-																									}
-																									W:Cowl(angle=1, color=_C_CARBON, effect=_C_CARBON) {
-																										S:Cowl(angle=-155, color=_C_CARBON, effect=_E_CARBON) { }
 																									}
 																								}
 																							}
@@ -537,7 +537,10 @@ Body
 																								}
 																								W:Cowl(angle=135, option=4, color=_C_BODY_1, effect=_E_BODY_1) { }
 																								S:Cowl(angle=90, option=4, color=_C_CARBON, effect=_E_CARBON) {
-																									S:Cowl(angle=175, option=1, effect=_E_CLEAR) {
+																									E:Cowl(angle=1, color=_C_CARBON, effect=_C_CARBON) {
+																										S:Cowl(angle=-155, color=_C_CARBON, effect=_E_CARBON) { }
+																									}
+																									N:Cowl(angle=-175, option=1, effect=_E_CLEAR) {
 																										E:Cowl(angle=90, option=1, effect=_E_CLEAR) {
 																											E:Cowl(angle=180, option=3, color=_C_CARBON, effect=_E_CARBON) {
 																												W:Cowl(angle=90, color=_C_CARBON, effect=_E_CARBON) { }
@@ -547,9 +550,6 @@ Body
 																												S:Cowl(option=4, color=_C_CARBON, effect=_E_CARBON) { }
 																											}
 																										}
-																									}
-																									E:Cowl(angle=1, color=_C_CARBON, effect=_C_CARBON) {
-																										S:Cowl(angle=-155, color=_C_CARBON, effect=_E_CARBON) { }
 																									}
 																								}
 																							}
