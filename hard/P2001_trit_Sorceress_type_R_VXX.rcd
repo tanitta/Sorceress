@@ -1,4 +1,4 @@
-// [RCD] 
+// [RCD]
 Val
 {
 	_A_HANDLE_FL(default=180, min=-360, max=360)
@@ -935,13 +935,14 @@ require "Boot" {
 	"ttata/Graphics",
 	"ttata/Input",
 	"ttata/trit_Component",
+	"ttata/Commander",
 	"ttata/Spine",
 	"ttata/Model/Sorceress"
 }
 require("ttata/Material.lua")
 require("ttata/Vector.lua")
 
-function OnFrame()	
+function OnFrame()
 	CallSpine(trit.model.sorceress.Core)
 end
 }
