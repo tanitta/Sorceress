@@ -67,10 +67,10 @@ namespace"sorceress"{
 					self.val.rr = self.val.rr-30--self.val.rr - limit((_H(self.sensors.rrRoot)-gain1)*gain2,0,10)
 				end
 			else
-				self.val.fl = self.val.fl - 30
-				self.val.fr = self.val.fr - 30
-				self.val.rl = self.val.rl - 30
-				self.val.rr = self.val.rr - 30
+-- 				self.val.fl = self.val.fl - 30
+-- 				self.val.fr = self.val.fr - 30
+-- 				self.val.rl = self.val.rl - 30
+-- 				self.val.rr = self.val.rr - 30
 
 			end
 		end);
