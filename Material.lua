@@ -27,38 +27,38 @@ namespace"sorceress"{
 			self.mat.brakeRotorRR = trit.Material:new(body,solid)
 
 			self.mat.light1 = trit.Material:new(body,solid)
-			
+
 			self.perBrakeColorFL = 0
 			self.perBrakeColorFR = 0
 			self.perBrakeColorRL = 0
 			self.perBrakeColorRR = 0
 		end);
-		
+
 		method "SetSensors"
 		:body(function(self,sensors)
 			self.sensors = sensors;
 		end);
-		
+
 		method"SetInputs"
 		:body(function(self,inputs)
 			self.inputs = inputs;
 		end);
-		
+
 		method"SetPerHandle"
 		:body(function(self,per)
 			self.inputs.perHandle = per;
 		end);
-		
+
 		method"SetModes"
 		:body(function(self,modes)
 			self.modes = modes;
 		end);
-		
+
 		method"SetBrake"
 		:body(function(self,str,num)
 			self.brake[str] = num
 		end);
-		
+
 		method "GetColMaterial"
 		:body(function(self,str)
 				return self.mat[str]:ComDecColor()
@@ -68,12 +68,12 @@ namespace"sorceress"{
 		:body(function(self,str)
 				return self.mat[str]:ComDecEffect()
 		end);
-		
+
 		method"GetVal"
 		:body(function(self,str)
 			return self.val[str]
 		end);
-		
+
 		method"SetColor"
 		:body(function(self)
 			self.mat.clear:SetColorHSV(0,0,0)
@@ -85,21 +85,21 @@ namespace"sorceress"{
 			self.mat.frame:SetColorHSV(0,0,1)
 			self.mat.frame:SetEffect(0,0,0,0)
 
-			self.mat.body1:SetColorHSV(355,0,0.7)
+			self.mat.body1:SetColorHSV(355,0,0.5)
 			self.mat.body1:SetEffect(0,0,0,0)
 
-			self.mat.body2:SetColorHSV(355,0,0.7)
+			self.mat.body2:SetColorHSV(30,1,1.0)
 			self.mat.body2:SetEffect(0,0,15,15)
 
-			self.mat.body3:SetColorHSV(355,0,0.2)
-			self.mat.body3:SetEffect(0,0,15,15)
+			self.mat.body3:SetColorHSV(355,0,0.5)
+			self.mat.body3:SetEffect(0,0,0,0)
 
 			self.mat.glass:SetColorHSV(0,0,0.2)
 			self.mat.glass:SetEffect(8,0,0,0)
 
 			self.mat.wheel:SetColorHSV(0,0,0.4)
 			self.mat.wheel:SetEffect(0,0,0,0)
-			
+
 			self.mat.light2:SetColorHSV(20,0,0.5)
 			self.mat.light2:SetEffect(10,0,0,0)
 
@@ -111,10 +111,10 @@ namespace"sorceress"{
 
 			self.mat.brakeCaliper:SetColorHSV(355,0,0.3)
 			self.mat.brakeCaliper:SetEffect(0,0,0,0)
-			
+
 			self.mat.light1:SetColorHSL(5,1,0.2)
 			self.mat.light1:SetEffect(0,15,0,0)
-			
+
 			self.mat.brakeRotorFL:SetColorHSV(0,0,0.1)
 			self.mat.brakeRotorFL:SetEffect(0,0,3,2)
 
@@ -126,21 +126,21 @@ namespace"sorceress"{
 
 			self.mat.brakeRotorRR:SetColorHSV(0,0,0.1)
 			self.mat.brakeRotorRR:SetEffect(0,0,3,2)
-			
+
 			for key, value in pairs(self.mat) do
 				self.val["_C_"..key] = self.mat[key]:ComDecColor()
 				self.val["_E_"..key] = self.mat[key]:ComDecEffect()
 			end
 		end);
-		
+
 		metamethod"__call"
 		:body(function(self)
 			self.mat.light1:SetColorHSL(5,1,0.2+0.4*math.abs(self.inputs.normalBrake-self.inputs.sideBrake))
 			self.mat.light1:SetEffect(0,15*math.abs(self.inputs.normalBrake-self.inputs.sideBrake),0,0)
 			self.val["_C_light1"] = self:GetColMaterial("light1")
 			self.val["_E_light1"] = self:GetEffMaterial("light1")
-			
-			
+
+
 			self.perBrakeColorFL = limit(self.perBrakeColorFL+(self.brake.fl*self.sensors.fl.nwy)*1*10^-4,0,300)
 			self.perBrakeColorFR = limit(self.perBrakeColorFR+(self.brake.fr*-self.sensors.fr.nwy)*1*10^-4,0,300)
 			self.perBrakeColorRL = limit(self.perBrakeColorRL+(self.brake.rl*self.sensors.rl.nwy)*1*10^-4,0,300)
@@ -162,7 +162,7 @@ namespace"sorceress"{
 
 			self.mat.brakeRotorRR:SetColorHSV(10*(self.perBrakeColorRR/300)^2,(self.perBrakeColorRR/300)^(0.5),0.1+(self.perBrakeColorRR/300)^2*0.9)
 			self.mat.brakeRotorRR:SetEffect(0,15*(self.perBrakeColorRR/300)^2,0,0)
-			
+
 			self.val["_C_brakeRotorFL"] = self:GetColMaterial("brakeRotorFL")
 			self.val["_E_brakeRotorFL"] = self:GetEffMaterial("brakeRotorFL")
 			self.val["_C_brakeRotorFR"] = self:GetColMaterial("brakeRotorFR")

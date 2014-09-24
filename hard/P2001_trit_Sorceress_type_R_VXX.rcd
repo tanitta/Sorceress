@@ -1,4 +1,4 @@
-// [RCD]
+// [RCD] 
 Val
 {
 	_A_HANDLE_FL(default=180, min=-360, max=360)
@@ -183,10 +183,10 @@ Body
 																															E:Cowl(angle=-85, option=1, effect=_E_CLEAR) {
 																																N:Cowl(angle=-115, option=1, effect=_E_CLEAR) {
 																																	W:Cowl(angle=-94, option=1, effect=_E_CLEAR) {
-																																		W:Cowl(angle=-10, color=_C_BODY_1, effect=_E_BODY_1) {
+																																		W:Cowl(angle=-10, color=_C_BODY_3, effect=_E_BODY_1) {
 																																			N:Cowl(angle=-92, option=1, effect=_E_CLEAR) {
 																																				W:Cowl(angle=-60, option=1, effect=_E_CLEAR) {
-																																					S:Cowl(angle=-92, color=_C_BODY_1, effect=_E_BODY_1) { }
+																																					S:Cowl(angle=-92, color=_C_BODY_3, effect=_E_BODY_1) { }
 																																				}
 																																			}
 																																			E:Cowl(angle=-10, option=3, color=_C_BODY_1, effect=_E_BODY_1) { }
@@ -201,7 +201,7 @@ Body
 																																			W:Cowl(angle=100, option=1, effect=_E_CLEAR) {
 																																				W:Cowl(angle=165, option=1, effect=_E_CLEAR) {
 																																					W:Cowl(angle=101, option=1, effect=_E_CLEAR) {
-																																						S:Cowl(angle=175, option=4, color=_C_BODY_1, effect=_E_BODY_1) { }
+																																						S:Cowl(angle=175, color=_C_BODY_1, effect=_E_BODY_1) { }
 																																					}
 																																				}
 																																			}
@@ -217,8 +217,8 @@ Body
 																																		N:Cowl(angle=108, option=1, effect=_E_CLEAR) {
 																																			N:Cowl(angle=140, option=1, effect=_E_CLEAR) {
 																																				N:Cowl(angle=108, color=_C_BODY_1, effect=_E_BODY_1) {
-																																					N:Cowl(angle=24, option=3, color=_C_BODY_1, effect=_E_BODY_1) {
-																																						E:Cowl(angle=95, option=3, color=_C_BODY_1, effect=_E_BODY_1) { }
+																																					N:Cowl(angle=24, option=3, color=_C_BODY_3, effect=_E_BODY_1) {
+																																						E:Cowl(angle=95, option=3, color=_C_BODY_3, effect=_E_BODY_1) { }
 																																					}
 																																					E:Cowl(angle=95, color=_C_BODY_1, effect=_E_BODY_1) { }
 																																				}
@@ -339,12 +339,9 @@ Body
 																		W:Cowl(angle=90, option=4, color=_C_BODY_1, effect=_E_BODY_1) { }
 																	}
 																	S:Cowl(angle=47, color=_C_BODY_1, effect=_E_BODY_1) {
-																		W:Cowl(angle=45, color=_C_CARBON, effect=_E_CARBON) {
-																			N:Cowl(angle=60, option=5, color=_C_CARBON, effect=_E_CARBON) { }
-																		}
 																		S:Cowl(angle=58, color=#020202, effect=#0000) {
 																			E:Cowl(angle=-100, option=4, color=_C_BODY_1, effect=_E_BODY_1) {
-																				N:Cowl(angle=-90, option=4, color=_C_BODY_1, effect=_E_BODY_1) { }
+																				N:Cowl(angle=-90, color=_C_BODY_1, effect=_E_BODY_1) { }
 																			}
 																			N:Cowl(angle=-179) {
 																				E:Cowl(angle=100, option=1, color=_C_BODY_1, effect=_E_CLEAR) {
@@ -472,10 +469,10 @@ Body
 																															W:Cowl(angle=-85, option=1, effect=_E_CLEAR) {
 																																N:Cowl(angle=-115, option=1, effect=_E_CLEAR) {
 																																	E:Cowl(angle=-94, option=1, effect=_E_CLEAR) {
-																																		E:Cowl(angle=-10, color=_C_BODY_1, effect=_E_BODY_1) {
+																																		E:Cowl(angle=-10, color=_C_BODY_3, effect=_E_BODY_1) {
 																																			N:Cowl(angle=-92, option=1, effect=_E_CLEAR) {
 																																				E:Cowl(angle=-60, option=1, effect=_E_CLEAR) {
-																																					S:Cowl(angle=-92, color=_C_BODY_1, effect=_E_BODY_1) { }
+																																					S:Cowl(angle=-92, color=_C_BODY_3, effect=_E_BODY_1) { }
 																																				}
 																																			}
 																																			W:Cowl(angle=-10, option=4, color=_C_BODY_1, effect=_E_BODY_1) { }
@@ -490,7 +487,7 @@ Body
 																																			E:Cowl(angle=100, option=1, effect=_E_CLEAR) {
 																																				E:Cowl(angle=165, option=1, effect=_E_CLEAR) {
 																																					E:Cowl(angle=101, option=1, effect=_E_CLEAR) {
-																																						S:Cowl(angle=175, option=3, color=_C_BODY_1, effect=_E_BODY_1) { }
+																																						S:Cowl(angle=175, color=_C_BODY_1, effect=_E_BODY_1) { }
 																																					}
 																																				}
 																																			}
@@ -507,8 +504,8 @@ Body
 																																		N:Cowl(angle=108, option=1, effect=_E_CLEAR) {
 																																			N:Cowl(angle=140, option=1, effect=_E_CLEAR) {
 																																				N:Cowl(angle=108, color=_C_BODY_1, effect=_E_BODY_1) {
-																																					N:Cowl(angle=24, option=4, color=_C_BODY_1, effect=_E_BODY_1) {
-																																						W:Cowl(angle=95, option=4, color=_C_BODY_1, effect=_E_BODY_1) { }
+																																					N:Cowl(angle=24, option=4, color=_C_BODY_3, effect=_E_BODY_3) {
+																																						W:Cowl(angle=95, option=4, color=_C_BODY_3, effect=_E_BODY_1) { }
 																																					}
 																																					W:Cowl(angle=95, color=_C_BODY_1, effect=_E_BODY_1) { }
 																																				}
@@ -516,7 +513,7 @@ Body
 																																		}
 																																		W:Cowl(angle=95, color=_C_BODY_1, effect=_E_BODY_1) { }
 																																	}
-																																	N:Cowl(angle=-15, option=5, color=_C_BODY_1, effect=_E_BODY_1) {
+																																	N:Cowl(angle=-15, option=4, color=_C_BODY_1, effect=_E_BODY_1) {
 																																		W:Cowl(angle=-95, color=_C_BODY_1, effect=_E_BODY_1) { }
 																																	}
 																																}
@@ -573,12 +570,9 @@ Body
 															S:Cowl(angle=-170, option=1, effect=_E_CLEAR) {
 																S:Cowl(angle=168, color=_C_BODY_1, effect=_E_BODY_1) {
 																	S:Cowl(angle=47, color=_C_BODY_1, effect=_E_BODY_1) {
-																		E:Cowl(angle=45, color=_C_CARBON, effect=_E_CARBON) {
-																			N:Cowl(angle=60, option=5, color=_C_CARBON, effect=_E_CARBON) { }
-																		}
 																		S:Cowl(angle=58, color=#020202, effect=#0000) {
 																			W:Cowl(angle=-100, option=3, color=_C_BODY_1, effect=_E_BODY_1) {
-																				N:Cowl(angle=-90, option=3, color=_C_BODY_1, effect=_E_BODY_1) { }
+																				N:Cowl(angle=-90, color=_C_BODY_1, effect=_E_BODY_1) { }
 																			}
 																			N:Cowl(angle=-179) {
 																				W:Cowl(angle=100, option=1, color=_C_BODY_1, effect=_E_CLEAR) {
@@ -674,9 +668,6 @@ Body
 											N:Cowl(angle=165, option=1, effect=_E_CLEAR) {
 												N:Cowl(angle=-165, option=1, color=_C_CARBON, effect=_E_CLEAR) {
 													N:Cowl(angle=-5, color=_C_CARBON, effect=_E_CARBON) {
-														N:Cowl(angle=-50, color=_C_CARBON, effect=_E_CARBON) {
-															N:Cowl(angle=-85, color=_C_CARBON, effect=_E_CARBON) { }
-														}
 														E:Cowl(angle=-30, color=_C_CARBON, effect=_E_CARBON) { }
 														W:Cowl(angle=-30, color=_C_CARBON, effect=_E_CARBON) { }
 														N:Cowl(angle=95, option=1, effect=_E_CLEAR) {
@@ -702,162 +693,123 @@ Body
 						}
 					}
 					N:Cowl(angle=-97, option=1, effect=_E_CLEAR) {
-						N:Cowl(angle=50, option=0, effect=_E_CLEAR) {
-							N:Cowl(angle=-126, option=1, effect=_E_CLEAR) {
-								E:Cowl(angle=-120, option=1, effect=_E_CLEAR) {
-									E:Cowl(angle=-150, option=1, effect=_E_CLEAR) {
-										E:Cowl(angle=92, color=_C_CARBON, effect=_E_CARBON) {
-											N:Cowl(angle=107, option=1, effect=_E_CLEAR) {
-												E:Cowl(angle=-105, option=1, effect=_E_CLEAR) {
-													S:Cowl(angle=-94, option=4, color=_C_CARBON, effect=_E_CARBON) {
-														E:Cowl(angle=-3, color=_C_CARBON, effect=_E_CARBON) {
-															N:Cowl(angle=-55, option=5, color=_C_CARBON, effect=_E_CARBON) { }
-															E:Cowl(option=4, color=_C_CARBON, effect=_E_CARBON) {
-																N:Cowl(angle=-55, option=5, color=_C_CARBON, effect=_E_CARBON) { }
+						N:Cowl(angle=15, option=0, effect=_E_CLEAR) {
+							N:Cowl(angle=-100, option=1, effect=_E_CLEAR) {
+								N:Cowl(angle=-11, option=1, effect=_E_CLEAR) {
+									N:Cowl(option=1, effect=_E_CLEAR) {
+										N:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+											E:Cowl(angle=-50, color=_C_CARBON, effect=_E_CARBON) {
+												S:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+													S:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+														S:Cowl(angle=-4, option=4, color=_C_CARBON, effect=_E_CARBON) {
+															E:Cowl(angle=-4, option=3, color=_C_CARBON, effect=_E_CARBON) { }
+														}
+													}
+												}
+											}
+											W:Cowl(angle=-50, color=_C_CARBON, effect=_E_CARBON) {
+												S:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+													S:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+														S:Cowl(angle=-4, option=3, color=_C_CARBON, effect=_E_CARBON) {
+															W:Cowl(angle=-4, option=4, color=_C_CARBON, effect=_E_CARBON) { }
+														}
+													}
+												}
+											}
+										}
+									}
+									S:Cowl(angle=-29, color=_C_CARBON, effect=_E_CARBON) {
+										S:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+											S:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+												S:Cowl(angle=-90, option=1, effect=_E_CLEAR) {
+													E:Cowl(angle=-80, option=1, effect=_E_CLEAR) {
+														N:Cowl(angle=-95, color=_C_CARBON, effect=_E_CARBON) {
+															E:Cowl(color=_C_CARBON, effect=_E_CARBON) { }
+															S:Cowl(angle=-60, color=_C_CARBON, effect=_E_CARBON) {
+																E:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+																	E:Cowl(angle=-25, option=4, color=_C_CARBON, effect=_E_CARBON) {
+																		N:Cowl(angle=-60, color=_C_CARBON, effect=_E_CARBON) { }
+																	}
+																}
 															}
 														}
-														N:Cowl(angle=-55, option=4, color=_C_GLASS, effect=_E_GLASS) {
-															E:Cowl(angle=180, option=4, color=_C_CARBON, effect=_E_CARBON) { }
-														}
-														E:Cowl(angle=110, option=1, effect=_E_CLEAR) {
-															E:Cowl(angle=140, option=1, effect=_E_CLEAR) {
-																E:Cowl(angle=110, option=1, effect=_E_CLEAR) {
-																	N:Cowl(angle=-54, option=3, color=_C_CARBON, effect=_E_CARBON) { }
+													}
+													W:Cowl(angle=-80, option=1, effect=_E_CLEAR) {
+														N:Cowl(angle=-95, color=_C_CARBON, effect=_E_CARBON) {
+															W:Cowl(color=_C_CARBON, effect=_E_CARBON) { }
+															S:Cowl(angle=-60, option=3, color=_C_CARBON, effect=_E_CARBON) {
+																W:Cowl(color=_C_CARBON, effect=_E_CARBON) {
+																	W:Cowl(angle=-25, option=3, color=_C_CARBON, effect=_E_CARBON) {
+																		N:Cowl(angle=-60, color=_C_CARBON, effect=_E_CARBON) { }
+																	}
 																}
 															}
 														}
 													}
 												}
+												S:Cowl(angle=-13, color=_C_CARBON, effect=_E_CARBON) { }
 											}
-											E:Cowl(angle=90, option=1, effect=_E_CLEAR) { }
-											E:Cowl(angle=54, color=_C_GLASS, effect=_E_GLASS) { }
-											S:Cowl(angle=23, color=_C_GLASS, effect=_E_GLASS) {
-												S:Cowl(angle=5, color=_C_GLASS, effect=_E_GLASS) { }
-												E:Cowl(angle=53, option=4, color=_C_GLASS, effect=_E_GLASS) {
-													S:Cowl(angle=180, option=4, color=_C_CARBON, effect=_E_CARBON) { }
-												}
-											}
-											N:Cowl(angle=19, option=4, color=_C_CARBON, effect=_E_CARBON) { }
 										}
-										E:Cowl(angle=-92, color=_C_CARBON, effect=_E_CARBON) {
-											N:Cowl(angle=-107, option=1, effect=_E_CLEAR) {
-												E:Cowl(angle=105, option=1, effect=_E_CLEAR) {
-													S:Cowl(angle=94, option=4, color=_C_CARBON, effect=_E_CARBON) {
-														E:Cowl(angle=3, color=_C_CARBON, effect=_E_CARBON) {
-															N:Cowl(angle=55, option=5, color=_C_CARBON, effect=_E_CARBON) { }
-															E:Cowl(option=4, color=_C_CARBON, effect=_E_CARBON) {
-																N:Cowl(angle=55, option=5, color=_C_CARBON, effect=_E_CARBON) { }
-															}
-														}
-														N:Cowl(angle=55, option=4, color=_C_GLASS, effect=_E_GLASS) {
-															E:Cowl(angle=180, option=4, color=_C_CARBON, effect=_E_CARBON) { }
-														}
-														E:Cowl(angle=110, option=1, effect=_E_CLEAR) {
-															E:Cowl(angle=140, option=1, effect=_E_CLEAR) {
-																E:Cowl(angle=110, option=1, effect=_E_CLEAR) {
-																	N:Cowl(angle=54, option=3, color=_C_CARBON, effect=_E_CARBON) { }
-																}
-															}
-														}
-													}
+										N:Cowl(angle=165, color=_C_BODY_2, effect=_E_BODY_1) {
+											N:Cowl(angle=20, color=_C_BODY_2, effect=_E_BODY_1) {
+												W:Cowl(angle=50, option=5, color=_C_BODY_2, effect=_E_BODY_1) { }
+												N:Cowl(angle=5, option=1, effect=_E_CLEAR) {
+													W:Cowl(angle=50, option=4, color=_C_BODY_2, effect=_E_BODY_1) { }
+													E:Cowl(angle=50, option=3, color=_C_BODY_2, effect=_E_BODY_1) { }
+													E:Cowl(angle=90, color=_C_BODY_2, effect=_E_BODY_1) { }
+													W:Cowl(angle=90, color=_C_BODY_2, effect=_E_BODY_1) { }
 												}
+												E:Cowl(angle=90, color=_C_BODY_2, effect=_E_BODY_1) { }
+												E:Cowl(angle=50, option=5, color=_C_BODY_2, effect=_E_BODY_1) { }
+												W:Cowl(angle=90, color=_C_BODY_2, effect=_E_BODY_1) { }
+												N:Cowl(angle=50, color=0, effect=#9000) { }
 											}
-											E:Cowl(angle=-54, color=_C_GLASS, effect=_E_GLASS) { }
-											S:Cowl(angle=-23, color=_C_GLASS, effect=_E_GLASS) {
-												S:Cowl(angle=-5, color=_C_GLASS, effect=_E_GLASS) { }
-												E:Cowl(angle=-53, option=4, color=_C_GLASS, effect=_E_GLASS) {
-													S:Cowl(angle=180, option=4, color=_C_CARBON, effect=_E_CARBON) { }
-												}
-											}
-											E:Cowl(angle=-90, option=1, effect=_E_CLEAR) { }
-											N:Cowl(angle=-19, option=4, color=_C_CARBON, effect=_E_CARBON) { }
+											W:Cowl(angle=50, option=3, color=_C_BODY_2, effect=_E_BODY_1) { }
+											E:Cowl(angle=90, color=_C_BODY_2, effect=_E_BODY_1) { }
+											E:Cowl(angle=50, option=4, color=_C_BODY_2, effect=_E_BODY_1) { }
+											W:Cowl(angle=90, color=_C_BODY_2, effect=_E_BODY_1) { }
+											S:Cowl(angle=70, color=0, effect=#9000) { }
 										}
 									}
-								}
-							}
-						}
-					}
-					S:Cowl(angle=-15, option=1, effect=_E_CLEAR) {
-						S:Cowl(angle=-125, option=1, effect=_E_CLEAR) {
-							S:Cowl(angle=140, option=1, effect=_E_CLEAR) {
-								S:Cowl(angle=175, option=1, effect=_E_CLEAR) {
-									S:Cowl(angle=78, option=1, effect=_E_CLEAR) {
-										S:Cowl(angle=119, option=1, effect=_E_CLEAR) {
-											S:Cowl(angle=160, color=_C_CARBON, effect=_E_CARBON) { }
-											E:Cowl(angle=50, color=_C_CARBON, effect=_E_CARBON) {
-												N:Cowl(angle=90, color=_C_CARBON, effect=_E_CARBON) { }
-											}
-											W:Cowl(angle=50, color=_C_CARBON, effect=_E_CARBON) {
-												N:Cowl(angle=90, color=_C_CARBON, effect=_E_CARBON) { }
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-					N:Cowl(angle=105, option=1, effect=_E_CLEAR) {
-						N:Cowl(angle=150, option=1, effect=_E_CLEAR) {
-							N:Cowl(angle=105, option=1, color=_C_SHEET_1, effect=_E_SHEET_1) {
-								N:Cowl(angle=-160, option=1, color=_C_SHEET_1, effect=_E_SHEET_1) {
-									N:Cowl(angle=155, color=_C_SHEET_2, effect=_E_SHEET_2) {
-										S:Cowl(angle=-80, color=_C_SHEET_2, effect=_E_SHEET_2) {
-											S:Cowl(angle=70, option=1, color=_C_SHEET_1, effect=_E_SHEET_1) {
-												S:Cowl(angle=-155, option=5, color=_C_CARBON, effect=_E_CARBON) {
-													S:Cowl(angle=-103, option=1, effect=_E_CLEAR) {
-														S:Cowl(angle=180, option=2, color=_C_SHEET_2, effect=_E_SHEET_2) {
-															E:Cowl(angle=176, option=1, effect=_E_CLEAR) {
-																E:Cowl(angle=178, option=2, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-															}
-															W:Cowl(angle=176, option=1, effect=_E_CLEAR) {
-																W:Cowl(angle=178, option=2, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-															}
-														}
-														E:Cowl(angle=150, option=1, effect=_E_CLEAR) {
-															N:Cowl(angle=130, option=1, effect=_E_CLEAR) {
-																W:Cowl(angle=90, option=5, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-															}
-														}
-														W:Cowl(angle=150, option=1, effect=_E_CLEAR) {
-															N:Cowl(angle=130, option=1, effect=_E_CLEAR) {
-																E:Cowl(angle=90, option=5, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-															}
-														}
-													}
-												}
-											}
-											W:Cowl(angle=-150, option=2, color=1, effect=_E_CLEAR) {
-												S:Cowl(angle=-110, option=1, effect=_E_CLEAR) {
-													E:Cowl(angle=-90, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-												}
-											}
-											E:Cowl(angle=-150, option=1, effect=_E_CLEAR) {
-												S:Cowl(angle=-110, option=1, effect=_E_CLEAR) {
-													W:Cowl(angle=-90, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-												}
-											}
-											W:Cowl(angle=176, option=1, effect=_E_CLEAR) {
-												W:Cowl(angle=178, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-											}
-											E:Cowl(angle=176, option=1, effect=_E_CLEAR) {
-												E:Cowl(angle=178, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-											}
-										}
+									S:Cowl(angle=100, option=1, effect=_E_CLEAR) {
 										S:Cowl(angle=160, option=1, effect=_E_CLEAR) {
-											W:Cowl(angle=-150, option=1, effect=_E_CLEAR) {
-												W:Cowl(angle=-100, option=2, color=_C_SHEET_1, effect=_E_SHEET_1) { }
+											S:Cowl(angle=-160, option=1, effect=_E_CLEAR) {
+												S:Cowl(angle=160, option=1, effect=_E_CLEAR) {
+													S:Cowl(angle=85, color=_C_CARBON, effect=_E_CARBON) {
+														N:Cowl(angle=-70, color=0, effect=#9000) { }
+													}
+													S:Cowl(angle=-160, option=1, effect=_E_CLEAR) {
+														S:Cowl(angle=160, option=1, effect=_E_CLEAR) {
+															S:Cowl(angle=85, color=_C_CARBON, effect=_E_CARBON) {
+																N:Cowl(angle=-70, color=0, effect=#9000) { }
+															}
+															S:Cowl(angle=-160, option=1, effect=_E_CLEAR) {
+																S:Cowl(angle=160, option=1, effect=_E_CLEAR) {
+																	S:Cowl(angle=85, color=_C_CARBON, effect=_E_CARBON) {
+																		N:Cowl(angle=-70, color=0, effect=#9000) { }
+																	}
+																	S:Cowl(angle=-160, option=1, effect=_E_CLEAR) {
+																		S:Cowl(angle=160, option=1, effect=_E_CLEAR) {
+																			S:Cowl(angle=85, color=_C_CARBON, effect=_E_CARBON) {
+																				N:Cowl(angle=-70, color=0, effect=#9000) { }
+																			}
+																			S:Cowl(angle=-160, option=1, effect=_E_CLEAR) {
+																				S:Cowl(angle=160, option=1, effect=_E_CLEAR) {
+																					S:Cowl(angle=85, color=_C_CARBON, effect=_E_CARBON) { }
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
 											}
-											E:Cowl(angle=-150, option=1, effect=_E_CLEAR) {
-												E:Cowl(angle=-100, option=2, color=_C_SHEET_1, effect=_E_SHEET_1) { }
+											S:Cowl(angle=85, color=_C_CARBON, effect=_E_CARBON) {
+												N:Cowl(angle=-70, color=0, effect=#9000) { }
 											}
 										}
-										W:Cowl(angle=176, option=1, effect=_E_CLEAR) {
-											W:Cowl(angle=178, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-										}
-										E:Cowl(angle=176, option=1, effect=_E_CLEAR) {
-											E:Cowl(angle=178, color=_C_SHEET_1, effect=_E_SHEET_1) { }
-										}
-										N:Cowl(angle=160, option=2, color=_C_SHEET_1, effect=_E_SHEET_1) { }
 									}
 								}
 							}
@@ -929,8 +881,8 @@ require("cel/Science/BasePhysic.lua")
 require("hikeo/stdlib.lua")
 require "Boot" {
 	"cel/Equa",
-	"ttata/FileIO",
-	"ttata/VModeler",
+	--"ttata/FileIO",
+	--"ttata/VModeler",
 	"ttata/Graphics",
 	"ttata/Input",
 	"ttata/trit_Component",
