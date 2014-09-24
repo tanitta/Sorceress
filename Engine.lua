@@ -51,10 +51,10 @@ namespace"sorceress"{
 		end);
 		metamethod"__call"
 		:body(function(self)
-			self.sensors.fl.nwz = self.sensors.fl.nwz_ or _WZ(self.sensors.fl.name)
-			self.sensors.fr.nwz = self.sensors.fr.nwz_ or _WZ(self.sensors.fr.name)
-			self.sensors.rl.nwz = self.sensors.rl.nwz_ or _WZ(self.sensors.rl.name)
-			self.sensors.rr.nwz = self.sensors.rr.nwz_ or _WZ(self.sensors.rr.name)
+			self.sensors.fl.nwz = self.sensors.fl.nwz or _WZ(self.sensors.fl.name)
+			self.sensors.fr.nwz = self.sensors.fr.nwz or _WZ(self.sensors.fr.name)
+			self.sensors.rl.nwz = self.sensors.rl.nwz or _WZ(self.sensors.rl.name)
+			self.sensors.rr.nwz = self.sensors.rr.nwz or _WZ(self.sensors.rr.name)
 
 			self.TCS_FL:SetInput(self.sensors.flRoot.lvz, self.sensors.fl.nwy or _WY(self.sensors.fl.name))
 			self.TCS_FR:SetInput(self.sensors.frRoot.lvz, -self.sensors.fr.nwy)
