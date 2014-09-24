@@ -923,7 +923,6 @@ Lua
 spirytus = {};
 	open_spirytus = loadlib("./Spirytus.DLL", "rc_OpenSpirytus");
 	open_spirytus();
-loadlib("NATSound.dll", "Load")();
 require("ttata/color.lua")
 require("hikeo/2Dlinelib.lua")
 require("cel/Science/BasePhysic.lua")
