@@ -11,5 +11,6 @@ return{
 	{"GEX9.lua"};
 
 	{"Material.lua"};
+	{"Test.lua"};
 	{"Core.lua"};
 };
