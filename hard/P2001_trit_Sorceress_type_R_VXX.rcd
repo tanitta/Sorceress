@@ -929,8 +929,6 @@ require("cel/Science/BasePhysic.lua")
 require("hikeo/stdlib.lua")
 require "Boot" {
 	"cel/Equa",
-	"ttata/FileIO",
-	"ttata/VModeler",
 	"ttata/Graphics",
 	"ttata/Input",
 	"ttata/trit_Component",
