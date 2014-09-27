@@ -1,4 +1,4 @@
-// [RCD] 
+// [RCD]
 Val
 {
 	_A_HANDLE_FL(default=180, min=-360, max=360)
@@ -882,6 +882,7 @@ require("hikeo/stdlib.lua")
 require "Boot" {
 	"cel/Equa",
 	--"ttata/FileIO",
+	"ttata/Math",
 	--"ttata/VModeler",
 	"ttata/Graphics",
 	"ttata/Input",
