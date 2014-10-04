@@ -893,6 +893,8 @@ require "Boot" {
 }
 require("ttata/Material.lua")
 require("ttata/Vector.lua")
+_SETLIMITVELOCITY(0, 10000/3.6);
+_SETLIMITVELOCITY(1, 12000/3.6);
 
 function OnFrame()
 	CallSpine(trit.model.sorceress.Core)
