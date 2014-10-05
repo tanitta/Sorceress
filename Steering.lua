@@ -59,6 +59,7 @@ namespace"sorceress"{
 				)
 				angM = math.atan2(verX*1,limit(math.abs(self.sensors.core.lvz),30*3.6,999999))*180/math.pi
 			end
+			-- angM = 30 * self.inputs.handle
 			self.val.perM = angM/30
 
 			local angTo_F = 1

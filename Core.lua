@@ -45,7 +45,6 @@ namespace"sorceress"{
 
 			self.Input = trit.model.sorceress.Test:new();
 			self.Input:SetSensors(self.Sensor:GetSensors())
-			self.Input:SetCOut(self.cOut)
 			self:cOut("...loaded Input");
 
 
@@ -89,8 +88,21 @@ namespace"sorceress"{
 			self:Mode()
 			self:Steering();
 
+			self.Engines[self.numEngine]:SetGene(self.Input:GetGene());
 			self.Engines[self.numEngine]:SetPerHandle(self.Steering:GetVal("perM"));
 			self.Engines[self.numEngine]();
+
+			self.Wing:SetGene(self.Input:GetGene())
+			-- local strGene = ""
+					-- InitMTRand(seed)
+			-- for i = 1, 14 do
+			-- 	strGene = strGene .. tostring(math.floor(self.Input:GetGene().enginePower[i].n)+0.5)	.. " "
+			-- 	-- strGene = strGene .. tostring(math.floor(self.Input:GetGene().score)+0.5)	.. " "
+			-- 		-- math.randomseed()
+			-- 		-- local r1 = math.random(100)
+			-- end
+
+			-- self:cOut(strGene)
 
 			self:Wing();
 			self:Brake();
