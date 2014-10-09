@@ -57,7 +57,7 @@ namespace"sorceress"{
 
 		metamethod"__call"
 		:body(function(self)
-			self.TCS_FL:SetInput(self.sensors.flRoot.lvz, self.sensors.fl.nwy or _WY(self.sensors.fl.name))
+			self.TCS_FL:SetInput(self.sensors.flRoot.lvz, self.sensors.fl.nwy)
 			self.TCS_FR:SetInput(self.sensors.frRoot.lvz, -self.sensors.fr.nwy)
 
 			self.TCS_RL:SetInput(-self.sensors.rlRoot.lvz, self.sensors.rl.nwy)
@@ -68,7 +68,8 @@ namespace"sorceress"{
 			self.TCS_RL()
 			self.TCS_RR()
 
-			local genPower = self.gene:GetPowerValue(math.abs(self.sensors.core.lvz))
+			local genPower = self.gene:GetPowerValue(0)--math.abs(self.sensors.core.lvz))
+			out(0,genPower)
 			-- local powMain=self.inputs.accel*(7.337*math.abs(self.sensors.core.lvz)^2 + 508.7*math.abs(self.sensors.core.lvz) ) + (1654 +self.numOriginPower*2)*self.inputs.accel
 			local powMain = genPower * self.inputs.accel
 			self.val.fl=powMain*(1-self.inputs.perHandle*(0.3+self.inputs.deff*0.7))*self.TCS_FL:GetOutput()*(1+self.torqueSplitRatio.y)*(1-self.modes.flight)

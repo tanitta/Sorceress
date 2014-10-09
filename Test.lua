@@ -35,7 +35,7 @@ namespace "trit"{
 
 					for i = 0, self.range/self.ticks do
 						self.wingAngle[i] = {n = 38-i*10*0.22, s = 4}
-						local np = (7.337*i*10)^2 + 508.7*i*10 + 1654 + 70000*2
+						local np = 7.337*(i*10)^2 + 508.7*i*10 + 1654 + 70000*2
 						np = limit(np, 20000,1300000)
 						self.enginePower[i] = {n = np, s = 4}
 					end
@@ -121,7 +121,7 @@ namespace "trit"{
 				end);
 				method "GaussianRandom"
 				:body(function(self,sigma,mu)
-					-- InitMTRand(_NTICKS()+GetTickCount()+seed)
+					-- InitMTRand(0)
 					local r1 = MTRandReal()
 					local r2 = MTRandReal()
 
@@ -155,8 +155,8 @@ namespace "trit"{
 						self.tmpData[n].wingAngle[i].n = self.bestGene.wingAngle[i].n + 0.5*self:GaussianRandom(self.tmpData[n].wingAngle[i].s,0)
 						self.tmpData[n].wingAngle[i].n = limit(self.tmpData[n].wingAngle[i].n, 0,45)
 
-						self.tmpData[n].enginePower[i].n = self.bestGene.enginePower[i].n + 20000 * self:GaussianRandom(self.tmpData[n].enginePower[i].s,0)
-						self.tmpData[n].enginePower[i].n = limit(self.tmpData[n].enginePower[i].n, 15000,1400000)
+						self.tmpData[n].enginePower[i].n = self.bestGene.enginePower[i].n + 5000 * self:GaussianRandom(self.tmpData[n].enginePower[i].s,0)
+						-- self.tmpData[n].enginePower[i].n = limit(self.tmpData[n].enginePower[i].n, 15000,1400000)
 					end
 				end);
 
@@ -393,7 +393,7 @@ namespace "trit"{
 						MoveTo(100,100)
 						LineTo(100,200)
 						LineTo(100+140*2,200)
-						local scale = 30000
+						local scale = 10000
 						for i = 1, table.getn(self.tmpData) do
 							_SETCOLOR(hsv(0,0,0.8*i/table.getn(self.tmpData)))
 							MoveTo(100,200-self.tmpData[i]:GetPowerValue(0)/scale*2)
