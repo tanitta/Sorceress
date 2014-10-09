@@ -52,11 +52,6 @@ namespace"trit"{
 						self.sensors.rl.nwy = _WY(self.sensors.rl.cn)
 						self.sensors.rr.nwy = _WY(self.sensors.rr.cn)
 					end
-					out(0,self.sensors.fl.nwy)
-					out(1,self.sensors.fr.nwy)
-					out(2,self.sensors.rl.nwy)
-					out(3,self.sensors.rr.nwy)
-					out(4,self.isAdvanced)
 				end);
 			};
 		};

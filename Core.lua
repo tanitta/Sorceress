@@ -13,27 +13,27 @@ namespace"sorceress"{
     	:body(function(self)
     	end);
 	};
-	
+
 	class "Core"
 	:inherits(trit.spine.BaseDriver)
 	:description("SorceressControlUnit"){
 		field"strName"
 		:attributes(static)
 		:init("Sorceress");
-	
+
 		method"UnitInit"
 		:body(function(self,strName)
 			self[strName] = trit.model.sorceress[strName]:new();
 			self[strName]:SetSensors(self.Sensor:GetSensors());
 			self[strName]:SetInputs(self.Input:GetInputs());
 		end);
-	
+
 		method"Init"
 		:attributes(override)
 		:body(function(self)
 			self.Input = trit.model.sorceress.Input:new();
 			self:cOut("...loaded Input");
-			
+
 			self.Sensor = trit.model.sorceress.Sensor:new();
 			self.Sensor:SetChipName("core",0);
 			self.Sensor:SetChipName("fl",_G["_N_FL"]);
@@ -52,7 +52,7 @@ namespace"sorceress"{
 			self:UnitInit("Steering")
 			self.Steering:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Steering");
-			
+
 			self.Engines = {};
 			self.Engines[1] = trit.model.sorceress.Engine:new();
 			self.Engines[1]:SetSensors(self.Sensor:GetSensors());
@@ -60,28 +60,28 @@ namespace"sorceress"{
 			self.Engines[1]:SetModes(self.Mode:GetModes())
 			self.numEngine = 1
 			self:cOut("...loaded Engine");
-			
+
 			self:UnitInit("Wing")
 			self.Wing:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Wing");
-			
+
 			self:UnitInit("Brake")
 			self.Brake:SetModes(self.Mode:GetModes())
 			self:cOut("...loaded Brake");
-			
+
 			self:UnitInit("Material")
 			self.Material:SetModes(self.Mode:GetModes())
 			self.Material:SetColor();
-			
+
 			self:cOut("...loaded Material");
-			
+
 			self:cOut("...loaded Sorceress Driver");
 		end);
-		
+
 		method"Input"
 		:body(function(self)
 		end);
-		
+
 		method"Call"
 		:attributes(override)
 		:body(function(self)
@@ -89,20 +89,20 @@ namespace"sorceress"{
 			self:Sensor();
 			self:Mode()
 			self:Steering();
-			
+
 			self.Engines[self.numEngine]:SetPerHandle(self.Steering:GetVal("perM"));
 			self.Engines[self.numEngine]();
-			
+
 			self:Wing();
 			self:Brake();
-			
+
 			self.Material:SetBrake("fl",self.Brake:GetVal("fl"))
 			self.Material:SetBrake("fr",self.Brake:GetVal("fr"))
 			self.Material:SetBrake("rl",self.Brake:GetVal("rl"))
 			self.Material:SetBrake("rr",self.Brake:GetVal("rr"))
 			self:Material();
 		end);
-		
+
 		method"Value"
 		:attributes(override)
 		:body(function(self)
@@ -115,7 +115,7 @@ namespace"sorceress"{
 			_A_WING_FR = self.Wing:GetVal("fr")
 			_A_WING_RL = self.Wing:GetVal("rl")
 			_A_WING_RR = self.Wing:GetVal("rr")
-			
+
 			_A_WING_SFL = self.Wing:GetVal("sfl")
 			_A_WING_SFR = self.Wing:GetVal("sfr")
 			_A_WING_SRL = self.Wing:GetVal("srl")
@@ -131,7 +131,7 @@ namespace"sorceress"{
 			_B_FR = self.Brake:GetVal("fr")
 			_B_RL = self.Brake:GetVal("rl")
 			_B_RR = self.Brake:GetVal("rr")
-			
+
 			_C_BODY_1 = self.Material:GetVal("_C_body1")
 			_C_BODY_2 = self.Material:GetVal("_C_body2")
 			_C_BODY_3 = self.Material:GetVal("_C_body3")
@@ -143,7 +143,7 @@ namespace"sorceress"{
 			_C_WHEEL = self.Material:GetVal("_C_wheel")
 			_C_BRAKECALIPER = self.Material:GetVal("_C_brakeCaliper")
 			_C_LIGHT_2 = self.Material:GetVal("_C_light2")
-			
+
 			_E_BODY_1 = self.Material:GetVal("_E_body1")
 			_E_BODY_2 = self.Material:GetVal("_E_body2")
 			_E_BODY_3 = self.Material:GetVal("_E_body3")
@@ -155,7 +155,7 @@ namespace"sorceress"{
 			_E_WHEEL = self.Material:GetVal("_E_wheel")
 			_E_BRAKECALIPER = self.Material:GetVal("_E_brakeCaliper")
 			_E_LIGHT_2 = self.Material:GetVal("_E_light2")
-			
+
 			_C_LIGHT_1 = self.Material:GetVal("_C_light1")
 			_E_LIGHT_1 = self.Material:GetVal("_E_light1")
 
@@ -169,12 +169,12 @@ namespace"sorceress"{
 			_E_BRAKEROTOR_RL = self.Material:GetVal("_E_brakeRotorRL")
 			_E_BRAKEROTOR_RR = self.Material:GetVal("_E_brakeRotorRR")
 		end);
-		
+
 		method"Draw"
 		:attributes(override)
 		:body(function(self)
 		end);
-		
+
 	};
 };
 };
