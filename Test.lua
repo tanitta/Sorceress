@@ -99,7 +99,7 @@ namespace "trit"{
 					self.maxScore = 400
 					self.generations = 0
 
-					self.isViewGraph = true
+					self.isViewGraph = false
 
 					--per 1 generation
 					self.tmpData = {}
