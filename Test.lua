@@ -14,10 +14,10 @@ do
 		return copy
 	end
 	function table.copy(t)
-  local u = { }
-  for k, v in pairs(t) do u[k] = v end
-  return setmetatable(u, getmetatable(t))
-end
+		local u = { }
+		for k, v in pairs(t) do u[k] = v end
+		return setmetatable(u, getmetatable(t))
+	end
 	table.deepcopy = deepcopy
 end
 namespace "trit"{
@@ -36,6 +36,7 @@ namespace "trit"{
 					for i = 0, self.range/self.ticks do
 						self.wingAngle[i] = {n = 38-i*10*0.22, s = 4}
 						local np = (7.337*i*10)^2 + 508.7*i*10 + 1654 + 70000*2
+						np = limit(np, 20000,1300000)
 						self.enginePower[i] = {n = np, s = 4}
 					end
 				end);
@@ -94,7 +95,7 @@ namespace "trit"{
 
 					self.globalSigma = 1
 
-					self.maxSamples = 10
+					self.maxSamples = 8
 					self.maxScore = 400
 					self.generations = 0
 
@@ -151,12 +152,12 @@ namespace "trit"{
 					local n = table.getn(self.tmpData)
 					for i = 0, self.range/self.ticks do
 						-- self.tmpData[n].wingAngle[i].s = self.bestGene.wingAngle[i].s + self:GaussianRandom(self.globalSigma,0)
-						self.tmpData[n].wingAngle[i].n = self.bestGene.wingAngle[i].n + self:GaussianRandom(self.tmpData[n].wingAngle[i].s,0)
+						self.tmpData[n].wingAngle[i].n = self.bestGene.wingAngle[i].n + 0.5*self:GaussianRandom(self.tmpData[n].wingAngle[i].s,0)
 						self.tmpData[n].wingAngle[i].n = limit(self.tmpData[n].wingAngle[i].n, 0,45)
 
-						self.tmpData[n].enginePower[i].n = self.bestGene.enginePower[i].n + 10000 * self:GaussianRandom(self.tmpData[n].enginePower[i].s,0)
-						self.tmpData[n].enginePower[i].n = limit(self.tmpData[n].enginePower[i].n, 20000,1500000)
-				end
+						self.tmpData[n].enginePower[i].n = self.bestGene.enginePower[i].n + 20000 * self:GaussianRandom(self.tmpData[n].enginePower[i].s,0)
+						self.tmpData[n].enginePower[i].n = limit(self.tmpData[n].enginePower[i].n, 15000,1400000)
+					end
 				end);
 
 				method "TestScore"
@@ -166,6 +167,7 @@ namespace "trit"{
 					self.inputs.normalBrake = 0
 					if math.abs(self.sensors.core.lvz)>self.range then
 						self.inputs.accel = 0
+						self.inputs.handle = 0
 						return true
 					else
 						return false
@@ -210,11 +212,13 @@ namespace "trit"{
 				:body(function(self,x,z,r)
 					local d = ((x-self.sensors.core.x)^2+(z-self.sensors.core.z)^2)^0.5
 					local lx,ly,lz = self:ConvertGlobalToLocal(x-self.sensors.core.x,40,z-self.sensors.core.z,0)
-					local rad = limit(math.deg(math.atan2(lx,-lz)*1),-20,20)
+					local rad = limit(math.deg(math.atan2(lx,-lz)*1),-30,30)
 
 					self.inputs.normalBrake = 0
 					self.inputs.accel = limit(math.abs(d),0,20)/100
-					self.inputs.handle = rad/20
+					-- self.inputs.handle = rad/20
+					local drad = rad/30 - self.inputs.handle
+					self.inputs.handle = ang(self.inputs.handle, drad, math.abs(limit(drad,-0.05,0.05)))
 
 					if self:IsRange(x,z,r) then
 						self.inputs.accel = 0
@@ -233,9 +237,10 @@ namespace "trit"{
 					local vz = self.sensors.core.vz
 					local v = (vx^2+vy^2+vz^2)^0.5
 					self.inputs.accel = 0
-					self.inputs.handle = 0
-					self.inputs.normalBrake = 1
-					if v > 5 then
+					self.inputs.handle = limit(self.inputs.handle,0,1)
+					self.inputs.normalBrake = self.inputs.normalBrake + 0.01
+					self.inputs.normalBrake = limit(self.inputs.normalBrake, 0, 0.5)
+					if v > 1 then
 						return false
 					else
 
@@ -271,55 +276,65 @@ namespace "trit"{
 						while table.getn(self.tmpData) < self.maxSamples do
 
 
-							local f = false
-							while not f do
-								out(1,"Move")
-								f = self:Move(0,0,1)
-								coroutine.yield()
-							end
-
-
-							local f = false
-							local counter = 0
-							while not f or counter < 30*3 do
-								out(1,"Stop")
-								f = self:Stop()
-								counter = counter + 1
-								coroutine.yield()
-							end
-
-							local counter = 0
-							while counter < 30*1 do
-								out(1,"Wait")
-								self.inputs.normalBrake = 0
-								counter = counter + 1
-								coroutine.yield()
-							end
-
 							self:AddTmpGene()
+							local scoresPerGene = {}
+							for i = 1, 8 do
+								local f = false
+								while not f do
+									out(1,"Move")
+									f = self:Move(0,0,10)
+									coroutine.yield()
+								end
 
-							local f = false
-							local score = 0
-							while not f and score < self.maxScore do
-								out(1,"TestScore",math.abs(self.sensors.core.lvz))
-								f = self:TestScore()
-								score = score + 1
-								coroutine.yield()
+
+								local f = false
+								local counter = 0
+								while not f or counter < 30*3 do
+									out(1,"Stop")
+									f = self:Stop()
+									counter = counter + 1
+									coroutine.yield()
+								end
+
+								local counter = 0
+								while counter < 30*1 do
+									out(1,"Wait")
+									self.inputs.normalBrake = 0
+									counter = counter + 1
+									coroutine.yield()
+								end
+
+
+								local f = false
+								local score = 0
+								while not f and score < self.maxScore do
+									out(1,"TestScore",math.abs(self.sensors.core.lvz))
+									f = self:TestScore()
+									score = score + 1
+									coroutine.yield()
+								end
+								-- self.bestGene.score = score
+								table.insert(scoresPerGene,score)
+
+								local f = false
+								local counter = 0
+								while not f or counter < 30*1 do
+									out(1,"Stop")
+									out(5,"score : ", score)
+									f = self:Stop()
+									counter = counter + 1
+									coroutine.yield()
+								end
 							end
-							-- self.bestGene.score = score
-							self:SetScore(score)
 
-							local f = false
-							local counter = 0
-							while not f or counter < 30*1 do
-								out(1,"Stop")
-								f = self:Stop()
-								counter = counter + 1
-								coroutine.yield()
+							--calc avg
+							local avgScore = 0
+							for i = 1, table.getn(scoresPerGene) do
+								avgScore = avgScore + scoresPerGene[i]
 							end
 
+							self:SetScore(avgScore/table.getn(scoresPerGene))
 
-							-- coroutine.yield()
 						end
 						self.generations = self.generations + 1
 					end
@@ -335,7 +350,6 @@ namespace "trit"{
 					-- out(2,self.tmpData[table.getn(self.tmpData)]:GetAngleValue(-self.sensors.core.lvz))
 					out(3,"generations : ",self.generations)
 					out(4,"tmpDatas : ",table.getn(self.tmpData))
-					out(5,"score : ",self.tmpData[table.getn(self.tmpData)].score)
 					out(6,"dcore : ",self.bestGene.score)
 
 					function MoveTo(x, y)

@@ -11,6 +11,8 @@ namespace"sorceress"{
 			self.perFlightMode = 0;
 
 			self.angHandle = {}
+
+			self.angM = 0
 		end);
 
 		method"GetVal"
@@ -48,7 +50,7 @@ namespace"sorceress"{
 			local velXExp = 0
 			velXExp = 1-math.exp(-math.abs(self.sensors.core.lvz/2))
 			velXExp = limit(velXExp,0,1)
-			local angM = 0
+			local angMp = 0
 			do
 				local verX = pid(
 					0,
@@ -57,14 +59,15 @@ namespace"sorceress"{
 					--{0.2,0,0},
 					{-8,8}
 				)
-				angM = math.atan2(verX*1,limit(math.abs(self.sensors.core.lvz),30*3.6,999999))*180/math.pi
+				angMp = math.atan2(verX*1,limit(math.abs(self.sensors.core.lvz),30*3.6,999999))*180/math.pi
 			end
+			self.angM = ang(self.angM,angMp,limit(math.abs(angMp-self.angM),0,5))
 			-- angM = 30 * self.inputs.handle
-			self.val.perM = angM/30
+			self.val.perM = self.angM/30
 
 			local angTo_F = 1
-			self.val.fl = (angM-angTo_F)*(1-self.modes.flight)+180
-			self.val.fr = (angM+angTo_F)*(1-self.modes.flight)+180
+			self.val.fl = (self.angM-angTo_F)*(1-self.modes.flight)+180
+			self.val.fr = (self.angM+angTo_F)*(1-self.modes.flight)+180
 
 			local angTo_R = 1
 			self.val.rl = (angTo_R+math.deg(math.atan2(self.sensors.core.lvx/10*1.1,limit(-self.sensors.core.lvz,10,9999999999))))*(1-self.modes.flight)
