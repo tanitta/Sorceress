@@ -51,7 +51,7 @@ namespace"sorceress"{
 		end);
 		metamethod"__call"
 		:body(function(self)
-			self.TCS_FL:SetInput(self.sensors.flRoot.lvz, self.sensors.fl.nwy or _WY(self.sensors.fl.name))
+			self.TCS_FL:SetInput(self.sensors.flRoot.lvz, self.sensors.fl.nwy)
 			self.TCS_FR:SetInput(self.sensors.frRoot.lvz, -self.sensors.fr.nwy)
 
 			self.TCS_RL:SetInput(-self.sensors.rlRoot.lvz, self.sensors.rl.nwy)
